@@ -12,12 +12,14 @@ from fields import AnonymousRatingField, RatingField
 
 settings.RATINGS_VOTES_PER_IP = 1
 
+
 class RatingTestModel(models.Model):
     rating = AnonymousRatingField(range=2, can_change_vote=True)
     rating2 = RatingField(range=2, can_change_vote=False)
     
     def __unicode__(self):
         return unicode(self.pk)
+
 
 class RatingTestCase(unittest.TestCase):
     def testRatings(self):
@@ -61,6 +63,7 @@ class RatingTestCase(unittest.TestCase):
         self.assertEquals(instance.rating.votes, 2)
         self.assertEquals(instance.rating2.score, 0)
         self.assertEquals(instance.rating2.votes, 0)
+
 
 class RecommendationsTestCase(unittest.TestCase):
     def setUp(self):
