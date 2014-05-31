@@ -1,4 +1,4 @@
-from django.conf import settings
+from __future__ import absolute_import, unicode_literals
 
 # Used to limit the number of unique IPs that can vote on a single object+field.
 #   useful if you're getting rating spam by users registering multiple accounts

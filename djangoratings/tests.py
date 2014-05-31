@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals
 import unittest
 import random
 
@@ -6,9 +7,9 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 
-from exceptions import *
-from models import Vote, SimilarUser, IgnoredObject
-from fields import AnonymousRatingField, RatingField
+from djangoratings.exceptions import *
+from djangoratings.models import Vote, SimilarUser, IgnoredObject
+from djangoratings.fields import AnonymousRatingField, RatingField
 
 settings.RATINGS_VOTES_PER_IP = 1
 

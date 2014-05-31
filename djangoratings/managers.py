@@ -1,8 +1,10 @@
+from __future__ import absolute_import, unicode_literals
 from django.db.models import Manager
 from django.db.models.query import QuerySet
 
 from django.contrib.contenttypes.models import ContentType
 import itertools
+
 
 class VoteQuerySet(QuerySet):
     def delete(self, *args, **kwargs):
@@ -27,7 +29,8 @@ class VoteQuerySet(QuerySet):
             obj.save()
         
         return retval
-        
+
+
 class VoteManager(Manager):
     def get_query_set(self):
         return VoteQuerySet(self.model)
@@ -44,6 +47,7 @@ class VoteManager(Manager):
         else:
             vote_dict = {}
         return vote_dict
+
 
 class SimilarUserManager(Manager):
     def get_recommendations(self, user, model_class, min_score=1):

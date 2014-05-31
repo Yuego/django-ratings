@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals
 """
 Template tags for Django
 """
@@ -10,6 +11,7 @@ from django.db.models import ObjectDoesNotExist
 from djangoratings.models import Vote
 
 register = template.Library()
+
 
 class RatingByRequestNode(template.Node):
     def __init__(self, request, obj, context_var):
@@ -30,6 +32,7 @@ class RatingByRequestNode(template.Node):
         except ObjectDoesNotExist:
             context[self.context_var] = 0
         return ''
+
 
 def do_rating_by_request(parser, token):
     """
@@ -52,6 +55,7 @@ def do_rating_by_request(parser, token):
     return RatingByRequestNode(bits[1], bits[3], bits[5])
 register.tag('rating_by_request', do_rating_by_request)
 
+
 class RatingByUserNode(RatingByRequestNode):
     def render(self, context):
         try:
@@ -66,6 +70,7 @@ class RatingByUserNode(RatingByRequestNode):
         except ObjectDoesNotExist:
             context[self.context_var] = 0
         return ''
+
 
 def do_rating_by_user(parser, token):
     """

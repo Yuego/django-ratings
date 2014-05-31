@@ -7,7 +7,7 @@ from django.conf import settings
 
 if not settings.configured:
     settings.configure(
-        DATABASES = {
+        DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': 'haptachi',
